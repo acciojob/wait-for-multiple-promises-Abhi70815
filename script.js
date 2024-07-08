@@ -1,6 +1,6 @@
 //your JS code here. If required.
 // Select the table element in the DOM
-const table = document.querySelector('table');
+const table = document.querySelector('#output');
 
 // Create an array of three promises
 const promises = [
