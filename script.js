@@ -1,32 +1,46 @@
 const table = document.getElementById('myTable');
-const promises = [{promise:"Promise 1",time:2},
-				  {promise:"Promise 2", time:1},
-				  {promise:"Promise 3", time:3}];
+        let promises=[
+            createPromise(),
+            createPromise(),
+            createPromise()
+        ];
+        
+        const loadrow=createRow('Loading...');
+        table.appendChild(loadrow);
+        Promise.all(promises).then((results)=>{
+            table.removeChild(loadrow);
 
-const promiseArray = promises.map((promise)=>{
-    return new Promise((resolve)=>{
-        let time = parseInt(promise.time) * 1000; // convert seconds to milliseconds
-        setTimeout(()=>{
-            resolve({ promise: promise.promise, time: promise.time });
-        }, time);
-    })
-})
+            results.forEach((time,index)=>{
+                const row = createRow(`Promise ${index+1}`,`${time.toFixed(3)}`);
+                table.appendChild(row);
+            });
+            const totaltime=results.reduce((sum,time)=>sum+time,0);
+            const totalRow=createRow(`Total`,`${totaltime.toFixed(3)}`);
+            table.appendChild(totalRow);
 
-Promise.all(promiseArray).then((results) => {
-    const totalTime =3.006;
-    table.innerHTML = '';
+        })
+        
+        function createPromise(){
+            return new Promise((res,rej)=>{
+                let timeout= Math.random()*2000+1000;
+                setTimeout(()=>{
+                    res(timeout/1000);
+                },timeout);
 
-    results.forEach(({ promise, time }) => {
-        const row = table.insertRow();
-        row.innerHTML = `
-            <td>${promise}</td>
-            <td>${time} seconds</td>
-        `;
-    });
+            });
+        }
 
-    const totalRow = table.insertRow();
-    totalRow.innerHTML = `
-        <td>Total</td>
-        <td>${totalTime.toFixed(3)} seconds</td>
-    `;
-});
+
+
+
+        table.appendChild(row);
+        function createRow(column1, column2){
+            let row = document.createElement('tr');
+            let col1= document.createElement('td');
+            let col2= document.createElement('td');
+            col1.textContent=column1;
+            col2.textContent=column2 || '';
+            row.appendChild(col1);
+            row.appendChild(col2);
+            return row;
+        }
