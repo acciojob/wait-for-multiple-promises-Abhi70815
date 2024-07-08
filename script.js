@@ -1,7 +1,7 @@
 window.onload = function() {
   function createPromise() {
     return new Promise(resolve => {
-      const timeout = Math.random() * 2000 + 1000;
+      const timeout = Math.random() * 1000 + 1000;
       setTimeout(() => {
         resolve(timeout / 1000);
       }, timeout);
