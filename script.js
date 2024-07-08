@@ -5,9 +5,9 @@ const table = document.getElementById('myTable');
             createPromise()
         ];
 
-
+let load =document.getElementById('load');
         Promise.all(promises).then((results)=>{
-        table.innerHTML='';
+        load.style.display="none";
 
             results.forEach((time,index)=>{
                 const row = createRow(`Promise ${index+1}`,`${time.toFixed(3)}`);
