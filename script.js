@@ -10,6 +10,7 @@ const promises = [
   createPromise()
 ];
 
+
 // Add a loading row to the table
 const loadingRow = document.querySelector('#loading');
 table.appendChild(loadingRow);
