@@ -5,10 +5,8 @@ const table = document.getElementById('myTable');
             createPromise()
         ];
         
-        const loadrow=createRow('Loading...');
-        table.appendChild(loadrow);
+        table.innerHTML='';
         Promise.all(promises).then((results)=>{
-            table.removeChild(loadrow);
 
             results.forEach((time,index)=>{
                 const row = createRow(`Promise ${index+1}`,`${time.toFixed(3)}`);
