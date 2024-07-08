@@ -4,9 +4,10 @@ const table = document.getElementById('myTable');
             createPromise(),
             createPromise()
         ];
-        
-        table.innerHTML='';
+
+
         Promise.all(promises).then((results)=>{
+        table.innerHTML='';
 
             results.forEach((time,index)=>{
                 const row = createRow(`Promise ${index+1}`,`${time.toFixed(3)}`);
