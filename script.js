@@ -1,6 +1,6 @@
 //your JS code here. If required.
 // Select the table element in the DOM
-const table = document.querySelector('table');
+const table = document.querySelector('#output');
 
 // Create an array of three promises
 const promises = [
@@ -11,7 +11,7 @@ const promises = [
 
 
 // Add a loading row to the table
-const loadingRow = createRow('Loading...');
+const loadingRow = getElementById('loading');
 table.appendChild(loadingRow);
 
 // Use Promise.all() to wait for all promises to resolve
