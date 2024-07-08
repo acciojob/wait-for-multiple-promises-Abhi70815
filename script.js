@@ -9,8 +9,10 @@ const promises = [
   createPromise()
 ];
 
+
 // Add a loading row to the table
-const loadingRow = createRow('Loading...');
+const loadingRow =document.getElementById('loading');
+// loadingRow.id='loading';
 table.appendChild(loadingRow);
 
 // Use Promise.all() to wait for all promises to resolve
